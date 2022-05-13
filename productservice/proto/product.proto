@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = "github.com/evgeniy-dammer/httpbasicauthgrpc/productservice";
+
+package productservice;
+
+service ProductService {
+    rpc FindAll (FindAllRequest) returns (FindAllResponse);
+    rpc Search (SearchRequest) returns (SearchResponse);
+}
+
+message FindAllRequest {}
+
+message FindAllResponse {
+    repeated Product Products = 1;
+}
+
+message SearchRequest {
+    string keyword = 1;
+}
+
+message SearchResponse {
+    repeated Product Products = 1;
+}
+
+message Product {
+    string id = 1;
+    string name = 2;
+    int32 quantity = 3;
+    double price = 4;
+    bool status = 5;
+}
